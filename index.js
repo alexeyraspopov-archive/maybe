@@ -1,17 +1,29 @@
-function Nothing(value){
-	return value && value.isMonad ? value : { bind: function(){
-			return Nothing();
-	} };
+function isMonad(value){
+	return value && value.isMonad;
 }
-
-function Just(value){
-	return value && value.isMonad ? value : { bind: function(morphism){
-			return Just(morphism(value));
-	} };
-};
 
 function isNullable(value){
 	return typeof value === 'undefined' || value == null;
+}
+
+function Nothing(value){
+	return isMonad(value) ? value : {
+		isMonad: true,
+		isNothing: true,
+		bind: function(){
+			return Nothing();
+		}
+	};
+}
+
+function Just(value){
+	return isMonad(value) ? value : {
+		isMonad: true,
+		isJust: true,
+		bind: function(morphism){
+			return Just(morphism(value));
+		}
+	};
 }
 
 function Maybe(value){
