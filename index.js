@@ -6,7 +6,7 @@ function Nothing(value){
 
 function Just(value){
 	return value && value.isMonad ? value : { bind: function(morphism){
-			return Maybe(morphism(value));
+			return Just(morphism(value));
 	} };
 };
 
