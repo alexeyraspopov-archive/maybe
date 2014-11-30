@@ -1,6 +1,6 @@
 {
   "name": "maybe",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Naive Maybe monad implementation",
   "main": "index.js",
   "scripts": {
