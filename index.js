@@ -1,5 +1,5 @@
 function isMonad(value){
-	return value && value.isMonad;
+	return value && (value.isJust || value.isNothing);
 }
 
 function isNullable(value){
@@ -8,8 +8,8 @@ function isNullable(value){
 
 function Nothing(value){
 	return isMonad(value) ? value : {
-		isMonad: true,
 		isNothing: true,
+		// todo: return this?
 		bind: function(){
 			return Nothing();
 		}
@@ -17,8 +17,8 @@ function Nothing(value){
 }
 
 function Just(value){
+	// todo: use object.create
 	return isMonad(value) ? value : {
-		isMonad: true,
 		isJust: true,
 		bind: function(morphism){
 			return Just(morphism(value));
