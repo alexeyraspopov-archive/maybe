@@ -15,7 +15,7 @@ Simple validation
 	};
 
 	function isEven(n){
-		return n % 2 ? Nothing() : Just(5);
+		return n % 2 ? Nothing() : Just(n);
 	}
 
 	Just(5)
