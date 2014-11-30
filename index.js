@@ -9,7 +9,6 @@ function isNullable(value){
 function Nothing(value){
 	return isMonad(value) ? value : {
 		isNothing: true,
-		// todo: return this?
 		bind: function(){
 			return Nothing();
 		}
@@ -17,7 +16,6 @@ function Nothing(value){
 }
 
 function Just(value){
-	// todo: use object.create
 	return isMonad(value) ? value : {
 		isJust: true,
 		bind: function(morphism){
