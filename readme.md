@@ -1,12 +1,14 @@
 # Maybe
 
-Naive Maybe monad implementation.
+A JavaScript Maybe implementation.
 
-# Install
+## Install
 
 	npm install alexeyraspopov/maybe
 
-# Usage
+## API
+
+## Usage
 
 Simple validation
 
@@ -30,6 +32,6 @@ Null safe
 		.bind(translate)
 		.bind(alert);
 
-# License
+## License
 
 MIT License &copy; Alexey Raspopov

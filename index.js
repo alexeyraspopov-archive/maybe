@@ -3,24 +3,22 @@ function isMonad(value){
 }
 
 function isNullable(value){
-	return typeof value === 'undefined' || value == null;
+	return typeof value === 'undefined' || value === null;
 }
 
 function Nothing(value){
 	return isMonad(value) ? value : {
 		isNothing: true,
-		bind: function(){
-			return Nothing();
-		}
+		bind: function(){ return Nothing(); },
+		toString: function(){ return 'Nothing()'; }
 	};
 }
 
 function Just(value){
 	return isMonad(value) ? value : {
 		isJust: true,
-		bind: function(morphism){
-			return Just(morphism(value));
-		}
+		bind: function(morphism){ return Just(morphism(value)); },
+		toString: function(){ return 'Just(' + value + ')'; }
 	};
 }
 

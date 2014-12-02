@@ -1,15 +1,12 @@
 {
   "name": "maybe",
   "version": "0.1.0",
-  "description": "Naive Maybe monad implementation",
+  "description": "A JavaScript Maybe implementation",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alexeyraspopov/maybe"
-  },
+  "repository": "dgelong/maybe",
   "keywords": [
     "maybe",
     "monad",
@@ -17,10 +14,10 @@
     "just",
     "nothing"
   ],
-  "author": "Alexey Raspopov <avenger7x13@gmail.com> (https://github.com/alexeyraspopov)",
+  "author": "Alexey Raspopov (https://github.com/alexeyraspopov)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alexeyraspopov/maybe/issues"
+    "url": "https://github.com/dgelong/maybe/issues"
   },
-  "homepage": "https://github.com/alexeyraspopov/maybe"
+  "homepage": "https://github.com/dgelong/maybe"
 }
