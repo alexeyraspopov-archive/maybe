@@ -13,6 +13,14 @@ function unwrap(m){
 	return value;
 }
 
+function spy(){
+	var object = { method: function(){} };
+
+	spyOn(object, 'method');
+
+	return object;
+}
+
 describe('Just', function(){
 	var value = 13, morphism = function(n){ return n * n };
 
@@ -45,22 +53,26 @@ describe('Just', function(){
 
 describe('Nothing', function(){
 	it('should not execute the chain', function(){
-		var subscriber = { method: function(){} };
+		var subscriber = spy();
 
-		spyOn(subscriber, 'method');
 		Nothing().bind(subscriber.method);
 
 		expect(subscriber.method).not.toHaveBeenCalled();
+	});
+
+	it('should accept alternative way of computation', function(){
+		var subscriber = spy();
+
+		Nothing().bind(function(){}, subscriber.method);
+
+		expect(subscriber.method).toHaveBeenCalled();
 	});
 });
 
 describe('Maybe', function(){
 	it('should recognize nullable values', function(){
-		var subscriber1 = { method: function(){} },
-			subscriber2 = { method: function(){} };
-
-		spyOn(subscriber1, 'method');
-		spyOn(subscriber2, 'method');
+		var subscriber1 = spy(),
+			subscriber2 = spy();
 
 		Maybe(null).bind(subscriber1.method);
 		Maybe(true).bind(subscriber2.method);

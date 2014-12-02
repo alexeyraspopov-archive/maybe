@@ -9,7 +9,9 @@ function isNullable(value){
 function Nothing(value){
 	return isMonad(value) ? value : {
 		isNothing: true,
-		bind: function(){ return Nothing(); },
+		bind: function(_, alternative){
+			return (typeof alternative === 'function' ? alternative : Nothing)();
+		},
 		toString: function(){ return 'Nothing()'; }
 	};
 }
