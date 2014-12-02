@@ -6,11 +6,15 @@ function isNullable(value){
 	return typeof value === 'undefined' || value === null;
 }
 
+function isFunction(value){
+	return typeof value === 'function';
+}
+
 function Nothing(value){
 	return isMonad(value) ? value : {
 		isNothing: true,
 		bind: function(_, alternative){
-			return (typeof alternative === 'function' ? alternative : Nothing)();
+			return isFunction(alternative) ? Just(alternative()) : Nothing();
 		},
 		toString: function(){ return 'Nothing()'; }
 	};

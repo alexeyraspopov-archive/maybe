@@ -67,6 +67,16 @@ describe('Nothing', function(){
 
 		expect(subscriber.method).toHaveBeenCalled();
 	});
+
+	it('should use Just in alternative way', function(){
+		var value = 5;
+
+		Nothing().bind(function(){}, function(){
+			return Just(value);
+		}).bind(function(wrapped){
+			expect(wrapped).toBe(value);
+		});
+	});
 });
 
 describe('Maybe', function(){
