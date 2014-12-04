@@ -1,7 +1,6 @@
-var _ = require('./index'),
-	Maybe = _.Maybe,
-	Just = _.Just,
-	Nothing = _.Nothing;
+var Maybe = require('./index'),
+	Just = Maybe.Just,
+	Nothing = Maybe.Nothing;
 
 function unwrap(m){
 	var value;

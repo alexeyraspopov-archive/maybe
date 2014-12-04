@@ -32,6 +32,6 @@ function Maybe(value){
 	return (isNullable(value) ? Nothing : Just)(value);
 }
 
-exports.Just = Just;
-exports.Nothing = Nothing;
-exports.Maybe = Maybe;
+Maybe.Just = Just;
+Maybe.Nothing = Nothing;
+module.exports = Maybe;
