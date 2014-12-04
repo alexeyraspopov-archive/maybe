@@ -4,7 +4,7 @@ A JavaScript Maybe monad implementation.
 
 ## Install
 
-	npm install alexeyraspopov/maybe
+	npm install dgelong.maybe
 
 ## API
 
