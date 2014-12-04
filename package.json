@@ -1,7 +1,7 @@
 {
   "name": "dgelong.maybe",
   "version": "0.2.0",
-  "description": "A JavaScript Maybe implementation",
+  "description": "A JavaScript Maybe monad implementation",
   "main": "index.js",
   "scripts": {
     "test": "gulp specs"
