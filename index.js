@@ -1,36 +1,31 @@
-function isMonad(value){
-	return value && (value.isJust || value.isNothing);
-}
+'use strict';
 
 function isNullable(value){
 	return typeof value === 'undefined' || value === null;
+}
+
+function check(value){
+	return (isNullable(value) ? Nothing : Just)(value);
 }
 
 function isFunction(value){
 	return typeof value === 'function';
 }
 
-function Nothing(value){
-	return isMonad(value) ? value : {
-		isNothing: true,
-		bind: function(_, alternative){
-			return isFunction(alternative) ? Just(alternative()) : Nothing();
-		},
-		toString: function(){ return 'Nothing()'; }
-	};
-}
+var Monad = require('dgelong.monad'),
+	Maybe, Just, Nothing;
 
-function Just(value){
-	return isMonad(value) ? value : {
-		isJust: true,
-		bind: function(morphism){ return Just(morphism(value)); },
-		toString: function(){ return 'Just(' + value + ')'; }
-	};
-}
+Maybe = Monad('Maybe', function(value, right, left){
+	return check(value).bind(right, left);
+});
 
-function Maybe(value){
-	return (isNullable(value) ? Nothing : Just)(value);
-}
+Just = Monad('Just', function(value, morphism){
+	return Just(morphism(value));
+});
+
+Nothing = Monad('Nothing', function(value, _, alternative){
+	return isFunction(alternative) ? Just(alternative()) : Nothing();
+});
 
 Maybe.Just = Just;
 Maybe.Nothing = Nothing;

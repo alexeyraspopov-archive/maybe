@@ -23,5 +23,8 @@
   "devDependencies": {
     "gulp": "^3.8.10",
     "gulp-jasmine": "^1.0.1"
+  },
+  "dependencies": {
+    "dgelong.monad": "^0.1.0"
   }
 }
